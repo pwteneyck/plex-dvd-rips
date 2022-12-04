@@ -117,6 +117,22 @@ options:
 
 `encode.py` takes no arguments and parses no arguments. It takes any configuration needed from `config.ini` instead.
 
+You can **pause** work on the encode queue by creating a file named `pause` in the queue directory - for example:
+
+```
+touch encode_queue/pause
+```
+
+While **paused**, the encode process will complete its current task but will not start any new ones until the `pause` file is removed from the queue. This can be useful for "backgrounding" the encode process, which consumes pretty much all the CPU capacity on your system.
+
 ### Transfer CLI Reference
 
 `transfer.py` takes no arguments and parses no arguments. It takes any configuration needed from `config.ini` instead.
+
+You can **pause** work on the transfer queue by creating a file named `pause` in the queue directory - for example:
+
+```
+touch transfer_queue/pause
+```
+
+While **paused**, the transfer process will complete its current task but will not start any new ones until the `pause` file is removed from the queue. This can be useful for ensuring the safety of file-system operations on the remote host, such as [SnapRAID](https://www.snapraid.it/manual) executions that will fail if performed while another process is writing to the relevant drives.
