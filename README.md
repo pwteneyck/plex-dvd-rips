@@ -113,6 +113,8 @@ options:
                         install_dir/bin/shell_scripts.
 ```
 
+MakeMKV will occasionally time out while reading from a disk - usually retrying will resolve the issue. If not, the logging output for the initial MakeMKV `info` call is written to `bin/resources/dev_sr{X}.info`. This output follows the `--robot` or "automation mode" formatting as described in [MakeMKV's usage.txt](https://www.makemkv.com/developers/usage.txt).
+
 ### Encode CLI Reference
 
 `encode.py` takes no arguments and parses no arguments. It takes any configuration needed from `config.ini` instead.
